@@ -1,6 +1,6 @@
 # Project3_Jobposting
 
-Team name: Gidget
+
 
 ```
 Group members:
