@@ -13,7 +13,8 @@ Veronica Ratcliff
 
 Inspiration
 ```
-As we are on the last lag of our Bootcamp, we will be looking for jobs soon, so we thought it would be a good idea to know which job postings are real or fake. 
+As we are on the last lag of our Bootcamp, we will be looking for jobs soon, 
+so we thought it would be a good idea to know which job postings are real or fake. 
 ```
 Find a Problem worth Solving, Analyzing, or Visualizing
 
