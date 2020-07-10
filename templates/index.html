@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" style="color: black;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title style="font-weight: bolder;">Job Posting Analysis</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+
+</head>
+
+
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron text-center">
+            <h1>Welcome to Job Posting Analysis website! <img src="../images/jobposting.jpg" alt="jobposting"></h1>
+            <br>
+            <h4>Wanna find out if the job posting is real or fake???</h4>
+            <img src="../images/jobseeker.jpg" alt="jobseeker">
+            <br>
+            <p>
+
+            </p>
+            <br>
+
+            <!-- <p><a class="btn btn-primary btn-lg" href="/scrape1" role="button">Scrape LinkedIn <img src="" alt="LinkedIn"></a></p> -->
+            <!-- <p><a class="btn btn-primary btn-lg" href="/scrape2" role="button">Scrape Indeed <img src="" alt="Indeed"></a></p> -->
+            <!-- <p><a class="btn btn-primary btn-lg" href="/scrape3" role="button">Scrape Glassdoor <img src="" alt="Glassdoor"></a></p> -->
+        </div>
+        <p><a class="btn btn-primary btn-md" href="/scrape1" role="button">Scrape LinkedIn </a></p>
+        <br>
+        <hr>
+        <br>
+
+        <div class="row">
+
+
+            <div class=" row col-lg-12 col-sm-9 jobanalysis">
+
+
+                <h2 style="font-weight: bolder;"> Analyze Job Description </h2>
+                <p>To find out whether a job posting is real or fake, copy paste the job description in the box below and click 'Analyze'</p>
+                <div class="textbox col-md-8 col-sm-6 ">
+                    <textarea name="Add Job Description " id="jobdescription " cols="75 " rows="25 "></textarea>
+                    <br>
+                    <a class="btn btn-primary btn-lg " role="button ">Analyze</a>
+                </div>
+
+                <div class="visuals col-md-4 col-sm-3 " style="border-style: solid; border-color: black;border-width: 1px; ">
+                    <h5 style="font-weight: bolder; ">Prediction</h5>
+                    <div id="prediction ">
+                        <!-- Prediction Analysis goes here -->
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    </div>
+
+
+
+</body>
+<footer id="footer">
+    <p>Project Owners: Abby, James, Jacob, Neelam and Veronica</p>
+    <p>Thanks for visiting our website!!! </p>
+    © Data Analysis and Visualization BootCamp 2020
+
+</footer>
+
+</html>
