@@ -31,6 +31,10 @@ Amazon AWS
 Tableau
 Databricks
 ```
+Model
+```
+Logistic Regression
+```
 
 
 
