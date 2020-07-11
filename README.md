@@ -26,9 +26,9 @@ Use ML in the context of technologies learned and must-use
 ```
 Sci-Kit Learn and/or another machine learning library
 Python Flask
+Python Pandas
 HTML/CSS/Bootstrap
 Amazon AWS
-Tableau
 Databricks
 ```
 Model
