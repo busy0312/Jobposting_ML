@@ -30,18 +30,30 @@
         </nav>
 
 
-        <section class="comparison_container">
-            <header>
-                <h2 class="h2header"></h2>
+        <section class="charts_container">
+            <header style="background-color: grey;">
+                <h2 class="h2header" style="text-align: center;border-color: teal;">Machine Learning Data Analysis</h2>
             </header>
             <hr>
             <h6 style="text-indent: 5%"></h6>
+            <br>
+            <p>We chose a dataset from Kaggle on Real and Fake Jobs. Using the dataset we preprocessed the dataset prior to fitting the model, performed feature selection and removed any unnecessary features.</p>
+            <p>After tuning and comparing the classifers we concluded that "Naive Bayes" gave us maximum accuracy. </p>
+            <div class="row">
+                <img src="" alt="">
+                <img src="" alt="">
+            </div>
+
+            <select id="selvalue">
+                <option value=Real>Real</option>
+                <option value=Fake>Fake</option>
+            </select>
 
             <div class="row">
                 <!-- <div class="subcontainer" > -->
                 <div class="col-xs-12 col-md-6">
                     <div class="border">
-                        <div id="bar">
+                        <div id="pie">
                             <!-- We append our bar chart here. -->
                         </div>
                     </div>
@@ -58,7 +70,7 @@
 
                 <div class="col-xs-12 col-md-6">
                     <div class="border">
-                        <div id="bar">
+                        <div id="pie">
                             <!-- We append our bar chart here. -->
                         </div>
                     </div>
@@ -79,5 +91,6 @@
 <footer id="footer">
     Project Owners: Abby, James, Jacob, Neelam and Veronica <br> Thanks for visiting our website!!! <br> © Data Analysis and Visualization BootCamp 2020
 </footer>
+<script type="text/javascript " src="../static/js/app.js"></script>
 
 </html>
