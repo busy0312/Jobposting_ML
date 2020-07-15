@@ -34,6 +34,7 @@ Databricks
 Model
 ```
 Logistic Regression
+NaiveBayes
 ```
 
 
