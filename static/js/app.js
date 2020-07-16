@@ -1,26 +1,41 @@
-function buildCharts(jobs) {
-
+function init() {
     async function test() {
-
         var data = await d3.csv("../Resources/jobpost.csv")
+        console.log(data);
+
+        var jobcat = d3.select("#selvalue").node().value;
+        console.log(jobcat);
+
+        var filteredData = data.filter(d => d.fraudulent === jobcat);
+        // console.log(filteredData);
 
 
-        var fraud = d3.select("#selvalue").node().value;
-        console.log(fraud);
+        var category_count = d3.nest()
+            .key(function(d) {
+                return d.fraudulent;
+            })
+            .rollup(function(leaves) {
+                return leaves.length;
+            })
+            .entries(data);
+        console.log(category_count)
 
-        var filteredData = data.filter(d => d.fraudulent === fraudulent);
-        console.log(filteredData);
-
-        var fraudcat = filteredData.map(d => +d.fraudulent)
-            // console.log(`Fraudulent: ${fraudcat}`)
 
         var req_ed = filteredData.map(d => d.required_education)
-            // console.log(`Required Education: ${req_ed}`)
 
+        var filtered_ed = req_ed.filter(d => d !== "")
+        console.log(filtered_ed)
+            // var x = category_count.filter(d => d.value === jobcat)
+        var i = 0
+        if (jobcat === "Real") {
+            i = 0
+        };
+
+        // console.log(x);
         var pieTrace = {
-            values: fraudcat,
-            labels: req_ed,
-            // hovertext: ,
+            values: category_count[i].values,
+            labels: filtered_ed,
+            // hovertext: count + labels,
             hoverinfo: 'hovertext',
             type: 'pie',
 
@@ -37,54 +52,11 @@ function buildCharts(jobs) {
 
 
 
-        Plotly.plot("pie", [pieTrace], pieLayout);
+        Plotly.newPlot("pie", [pieTrace], pieLayout);
+    }
 
-    };
-
-
-}
-
-function dropdowninfo(jobs) {
-    // Reading CSV File
-    d3.csv("../Resources/jobpost.csv").then((data) => {
-        d3.select("#selvalue").on("change", test)
-    });
+    test();
 };
 
-
-// create the function for the change event
-function optionChanged(jobs) {
-    buildCharts(jobs);
-    dropdowninfo(jobs);
-
-
-}
-
-// create the function to get initial data
-function init() {
-    // Grab a reference to the dropdown select element
-
-
-
-    // Use the list of sample names to populate the select options
-    d3.csv("../Resources/jobpost.csv").then((data) => {
-        console.log(data)
-
-        d3.select("#selvalue")
-            .selectAll('myOptions')
-            .data(d3.map(data, function(d) { return d.fraudulent; }).keys())
-            .enter()
-            .append('option')
-            .text(function(d) { return d; }) // text showed in the menu
-
-    });
-
-
-
-    buildCharts(jobs);
-    dropdowninfo(jobs);
-
-};
-
-
+d3.selectAll("#selvalue").on("change", init);
 init();
