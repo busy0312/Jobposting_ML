@@ -50,10 +50,9 @@ function init() {
         };
         // title: `Pie Chart `,
 
-
-
         Plotly.newPlot("pie", [pieTrace], pieLayout);
     
+
         // Pie chart for Employment Type
         var emp_type = filteredData.map(d => d.employment_type)
 
@@ -121,35 +120,63 @@ function init() {
 
 
         // Bar Chart Top 10 Job Titles
-        // var job_titles = filteredData.map(d => d.title)
+        var xjob_titles = filteredData.map(d => d.title)
 
-        // var filtered_title= job_titles.filter(d => d !== "")
-        // console.log(filtered_title
-        //     // var x = category_count.filter(d => d.value === jobcat)
-        // var i = 0
-        // if (jobcat === "Real") {
-        //     i = 0
-        // };
+        var title_counts = {}
+        xjob_titles.forEach(d => {
+            if (d in title_counts) {
+                title_counts[d] = title_counts[d] + 1
+            } else {
+                title_counts[d] = 1
+            }
+        })
 
-        // // console.log(x);
-        // var pieReqexp = {
-        //     values: category_count[i].values,
-        //     labels: filtered_reqExp,
-        //     // hovertext: count + labels,
-        //     hoverinfo: 'hovertext',
-        //     type: 'pie',
+        console.log(title_counts)
+        var items = Object.keys(title_counts).map(function(key) {
+            return [key, title_counts[key]];
+          });
+          // Sort the array based on the second element
+          items.sort(function(first, second) {
+            return second[1] - first[1];
+          });
 
-        // };
+        console.log(items)
+        
+        sorted_items = items.slice(0,10)
+        console.log(sorted_items)
+    
 
-        // var pieLayout = {
-        //     'legend': {
-        //         x: 0.1,
-        //         // y: 5,
-        //         'orientation': 'h'
-        //     }
-        // };
+        // var fraudtype= filteredData.map(d => d.fraudulent)
+        var filtered_title= xjob_titles.filter(d => d !== "")
+        console.log(filtered_title)
+            // var x = category_count.filter(d => d.value === jobcat)
+        var i = 0
+        if (jobcat === "Real") {
+            i = 0
+        };
 
-        // Plotly.newPlot("reqExpPie", [pieReqexp], pieLayout);
+        var trace = {
+            x: sorted_items.map(d => d[0]),
+            y: sorted_items.map(d => d[1]),
+            marker: { color: 'DarkSeaGreen' },
+            type: "bar",
+        };
+        var layout = {
+            title: {
+                text: 'Top 10 Job Titles',
+                font: {
+                    size: 24,
+                    family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                    color: '#666'
+
+                }
+            }
+        }
+
+        var config = { responsive: true }
+        var data_bar = [trace];
+
+        Plotly.newPlot("bar", data_bar, layout, config);
  
         
     }
