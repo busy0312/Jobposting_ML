@@ -19,7 +19,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/style.css') }}">
 
 </head>
 
@@ -28,13 +28,13 @@
 
     <div class="body">
         <nav class="navbar navbar-expand-lg navbar-light bg-light topnav">
-            <a class="navbar-brand div1" style="align-content: center;" href="index.html">Job Posting Analysis</a>
+            <a class="navbar-brand div1" style="align-content: center;" href="/">Job Posting Analysis</a>
 
             <!-- <li class="nav-item navbar-brand ">
                 <a class="nav-link " style="align-self: right ; " target=" __blank " href="Analysis.html ">ML Model Base Analysis</a>
             </li> -->
             <li class="nav-item navbar-brand " style="text-align: right;">
-                <a class="nav-link " ; target=" __blank " href="Analysis.html ">ML Model Base Analysis</a>
+                <a class="nav-link " ; target=" __blank " href="/Analysis">ML Model Base Analysis</a>
 
             </li>
             <!-- <img style="align-content: right;" src=" ../images/jobposting.jpg " alt="jobposting"> -->
@@ -44,7 +44,7 @@
                 <h1>Welcome to Job Posting Analysis website! </h1>
                 <br>
                 <h4>Wanna find out if the job posting is real or fake???</h4>
-                <img src="../images/jobseeker.jpg " alt="jobseeker ">
+                <img src="{{ url_for('static', filename= 'images/jobseeker.jpg') }} " alt="jobseeker ">
                 <br>
                 <p>
                     When applying to a new job, many of us wonder if the position applying for is real or fake. While this question may not arise to some before or immediately after applying for the job; but at certain point when you haven't heard back from that Company's
@@ -61,16 +61,31 @@
                 <div class="form row col-12 ">
                     <div class="col-lg-4 ">
                         <h4 style="font-weight: bold ">Jobs on Indeed.com</h4>
-                        <textarea name="Enter Job Categories " id="Jobcategories " cols="40 " rows="2 " placeholder="Enter job title, keywords "></textarea>
-                        <br>
-                        <a class="btn btn-primary btn-md " href="/scrape " role="button ">Scrape Indeed </a>
+                        <!-- <textarea name="Enter Job Categories " id="Jobcategories " cols="40 " rows="2 " placeholder="Enter job title, keywords "></textarea> -->
+                        <!-- <br> -->
+                        <form action="/" method="POST"> 
+                            <label for="jobsite">Choose a Jobsite to Scrape:</label>
+
+                            <select name="jobsite" id="jobsite">
+                            <option value="indeed">Indeed</option>
+                            <option value="craigslist">Craigslist</option>                            
+                            </select>
+                            <input type="text" id="user_input" name="user_input" placeholder="Job Title">
+                            <button type="submit" >Submit</button>
+                            </form>  
+                        <!-- <a class="btn btn-primary btn-md " href="/scrape " role="button ">Scrape Indeed </a> -->
                     </div>
                     <div class="col-lg-7 " style="padding-top: 35px; ">
                         <div class="table " style="width: 100%; height:100%px ;border: grey 1px solid; background-color: white; ">
                             <div class="table " style="border-width: 2px; border-color: grey; scroll-behavior: auto; ">
                                 <!-- <div class="card-body " style="width: 100% "> -->
                                 <!-- <h4 style="font-weight: bold " class="card-title ">Results</h4> -->
-                                <h6 class="card-subtitle mb-2 text ">{{Jobs search results to load here}}</h6>
+                                {% for job in job_postings%}
+                                    <p>{{job.title}}</p>
+                                    <p>{{job.description}}</p>
+                                    <hr>
+                                {% endfor %}
+                                
                                 <!-- </div> -->
 
                             </div>
@@ -84,11 +99,15 @@
                 <div class="jobanalysis container2 ">
                     <div class="textbox col-xs-12 col-md-6 col-lg-8">
                         <!-- <div class=" "> -->
-                        <h4 style="font-weight: bold "> Analysis of Job Description </h4>
-                        <p></p>
+                        <h4 style="font-weight: bold "> Test Job Description </h4>
+                        <form action="/" method="POST"> 
+                            <input type="text" id="user_input" name="user_input" placeholder="Insert Job Description here">
+                            <button type="submit">Analyze</button>
+                        </form>
+                        <!-- <p></p>
                         <textarea style="border-style: solid; border-color: black;border-width: 1px; " placeholder="Paste job description here and click 'Analyze' " name="Add Job Description " id="jobdescription " cols="75 " rows="15 "></textarea>
                         <br>
-                        <a class="btn btn-primary btn-md " role="button ">Analyze</a>
+                        <a class="btn btn-primary btn-md " role="button ">Analyze</a> -->
                         <!-- </div> -->
                     </div>
                     <div class="visual col-xs-12 col-md-6 col-lg-4">
@@ -105,6 +124,7 @@
 <footer id="footer">
     Project Owners: Abby, James, Jacob, Neelam and Veronica <br> Thanks for visiting our website!!! <br> © Data Analysis and Visualization BootCamp 2020
 </footer>
-<script type="text/javascript " src="static/js/app.js"></script>
+<!-- <script type="text/javascript" src="static/js/app.js"></script> -->
+<script type="text/javascript" src="{{ url_for('static', filename= 'js/app.js') }}"></script>
 
 </html>
