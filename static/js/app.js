@@ -2,14 +2,14 @@ function init() {
     async function test() {
         var data = await d3.csv("../Resources/jobpost.csv")
             // console.log(data);
-
+​
         var jobcat = d3.select("#selvalue").node().value;
         // console.log(jobcat);
-
+​
         var filteredData = data.filter(d => d.fraudulent === jobcat);
         // console.log(filteredData);
-
-
+​
+​
         var category_count = d3.nest()
             .key(function(d) {
                 return d.fraudulent;
@@ -19,10 +19,10 @@ function init() {
             })
             .entries(data);
         // console.log(category_count)
-
-
+​
+​
         var req_ed = filteredData.map(d => d.required_education)
-
+​
         var filtered_ed = req_ed.filter(d => d !== "")
             // console.log(filtered_ed)
             // var x = category_count.filter(d => d.value === jobcat)
@@ -47,13 +47,13 @@ function init() {
             // },
             hole: 0.4
         };
-
+​
         var pieLayout = {
             'legend': {
                 // x: 0.05,
                 // y: .5,
                 'orientation': 'h'
-
+​
             },
             title: {
                 text: 'Required Education',
@@ -65,13 +65,13 @@ function init() {
             }
         };
         // title: `Pie Chart `,
-
+​
         Plotly.newPlot("pie", [pieTrace], pieLayout);
-
-
+​
+​
         // Pie chart for Employment Type
         var emp_type = filteredData.map(d => d.employment_type)
-
+​
         var filtered_empT = emp_type.filter(d => d !== "")
             // console.log(filtered_empT)
             // var x = category_count.filter(d => d.value === jobcat)
@@ -79,7 +79,7 @@ function init() {
         if (jobcat === "Real") {
             i = 0
         };
-
+​
         // console.log(x);
         var pieEmp = {
             values: category_count[i].values,
@@ -89,7 +89,7 @@ function init() {
             type: 'pie',
             showlegend: false,
         };
-
+​
         var pieLayout = {
             'legend': {
                 x: 0.1,
@@ -106,13 +106,13 @@ function init() {
             }
         };
         // title: `Pie Chart `,
-
+​
         Plotly.newPlot("empPie", [pieEmp], pieLayout);
-
-
+​
+​
         // Pie chart for Required Experience
         var exp_type = filteredData.map(d => d.required_experience)
-
+​
         var filtered_reqExp = exp_type.filter(d => d !== "")
             // console.log(filtered_reqExp)
             // var x = category_count.filter(d => d.value === jobcat)
@@ -120,7 +120,7 @@ function init() {
         if (jobcat === "Real") {
             i = 0
         };
-
+​
         // console.log(x);
         var pieReqexp = {
             values: category_count[i].values,
@@ -130,9 +130,9 @@ function init() {
             type: 'pie',
             showlegend: false,
             hole: 0.4
-
+​
         };
-
+​
         var pieLayout = {
             'legend': {
                 x: 0.25,
@@ -149,13 +149,13 @@ function init() {
             }
         };
         // title: `Pie Chart `,
-
+​
         Plotly.newPlot("reqExpPie", [pieReqexp], pieLayout);
-
-
+​
+​
         // Bar Chart Top 10 Job Titles
         var xjob_titles = filteredData.map(d => d.title)
-
+​
         var title_counts = {}
         xjob_titles.forEach(d => {
             if (d in title_counts) {
@@ -164,7 +164,7 @@ function init() {
                 title_counts[d] = 1
             }
         })
-
+​
         console.log(title_counts)
         var items = Object.keys(title_counts).map(function(key) {
             return [key, title_counts[key]];
@@ -173,13 +173,13 @@ function init() {
         items.sort(function(first, second) {
             return second[1] - first[1];
         });
-
+​
         // console.log(items)
-
+​
         sorted_items = items.slice(0, 10)
             // console.log(sorted_items)
-
-
+​
+​
         // var fraudtype= filteredData.map(d => d.fraudulent)
         var filtered_title = xjob_titles.filter(d => d !== "")
         console.log(filtered_title)
@@ -188,7 +188,7 @@ function init() {
         if (jobcat === "Real") {
             i = 0
         };
-
+​
         var trace = {
             x: sorted_items.map(d => d[0]),
             y: sorted_items.map(d => d[1]),
@@ -204,21 +204,21 @@ function init() {
                     color: '#666',
                     // style: 'bolder',
                     // background: 'grey'
-
+​
                 }
             }
         }
-
+​
         var config = { responsive: true }
         var data_bar = [trace];
-
+​
         Plotly.newPlot("bar", data_bar, layout, config);
-
-
+​
+​
     }
-
+​
     test();
 };
-
+​
 d3.selectAll("#selvalue").on("change", init);
 init();

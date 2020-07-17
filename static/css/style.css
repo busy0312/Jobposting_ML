@@ -2,11 +2,11 @@
     background-color: darkseagreen;
     font-family: Georgia, 'Times New Roman', Times, serif;
 } */
-
+​
 .img {
     align-self: center;
 }
-
+​
 .html {
     position: relative;
     top: 0;
@@ -16,7 +16,7 @@
     height: 100%;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-
+​
 .body {
     position: relative;
     top: 0;
@@ -29,7 +29,7 @@
     box-sizing: border-box;
     /* display: block; */
 }
-
+​
 .maincontainer {
     margin-top: 2%;
     margin-left: 2%;
@@ -40,13 +40,13 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     /* display: block; */
 }
-
+​
 .div1 {
     box-sizing: content-box;
     font-weight: bolder;
     background-color: grey;
 }
-
+​
 .navbar a {
     font-size: 20px;
     color: black;
@@ -55,29 +55,29 @@
     background-color: darkseagreen;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-
-
+​
+​
 /* .visual {
     width: auto;
     height: auto;
 } */
-
+​
 .textbox {
     height: fit-content;
     width: fit-content;
 }
-
+​
 .container2 {
     display: block;
     height: 100%;
 }
-
-
+​
+​
 /* .card-body {
     width: 100%;
     align-self: right;
 } */
-
+​
 #footer {
     background-color: #505251;
     border-top-style: solid;
