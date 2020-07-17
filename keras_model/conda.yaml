@@ -1,0 +1,12 @@
+channels:
+- defaults
+- conda-forge
+dependencies:
+- python=3.6.10
+- pip
+- pip:
+  - mlflow
+  - keras==2.4.3
+  - tensorflow==2.2.0
+  - tensorflow_hub
+name: mlflow-env

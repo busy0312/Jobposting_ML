@@ -107,6 +107,7 @@ function init() {
         };
         // title: `Pie Chart `,
 
+
         Plotly.newPlot("empPie", [pieEmp], pieLayout);
 
 

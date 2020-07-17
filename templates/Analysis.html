@@ -57,17 +57,10 @@
                 <option value=Fake>Fake</option>
                 </select>
 
+
                 <div class="subcontainer">
                     <div class="row ">
-                        <!-- <div class="subcontainer " > -->
-                        <div class="col-xs-12 col-md-4">
-                            <div class="border">
-                                <div id="pie">
-                                    <!-- We append our pie chart here. -->
-                                </div>
-                            </div>
-                        </div>
-
+             
                         <div class="col-xs-12 col-md-4">
                             <div class="border">
                                 <div id="empPie">
@@ -83,6 +76,7 @@
                                 </div>
                             </div>
                         </div>
+                  </div>
                     </div>
 
                     <div class="row">
@@ -93,13 +87,21 @@
                                     <!-- </div> -->
                                 </div>
                             </div>
-                            <!-- </div> -->
+=======
+                    <div class="col-xs-12 col-md-4">
+                        <div class="border">
+                            <div id="reqExpPie">
+                        <!-- We append our bar chart here. -->
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
 
-        </div>
+ 
+            </div>
+
+        </section>
+
     </div>
     <!-- d3/ploty/chart -->
     <script src="https://d3js.org/d3.v5.min.js "></script>
@@ -108,6 +110,14 @@
 
     <!-- Our Javascript -->
     <!-- <script src="app.js "></script> -->
+
+<!-- d3/ploty/chart -->
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+<!-- Our Javascript -->
+<script src="app.js"></script>
 
 </body>
 <footer id="footer">
