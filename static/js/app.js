@@ -1,10 +1,10 @@
 function init() {
     async function test() {
         var data = await d3.csv("../Resources/jobpost.csv")
-        console.log(data);
+            // console.log(data);
 
         var jobcat = d3.select("#selvalue").node().value;
-        console.log(jobcat);
+        // console.log(jobcat);
 
         var filteredData = data.filter(d => d.fraudulent === jobcat);
         // console.log(filteredData);
@@ -18,46 +18,62 @@ function init() {
                 return leaves.length;
             })
             .entries(data);
-        console.log(category_count)
+        // console.log(category_count)
 
 
         var req_ed = filteredData.map(d => d.required_education)
 
         var filtered_ed = req_ed.filter(d => d !== "")
-        console.log(filtered_ed)
+            // console.log(filtered_ed)
             // var x = category_count.filter(d => d.value === jobcat)
         var i = 0
         if (jobcat === "Real") {
             i = 0
         };
-
-        // console.log(x);
+        var color1 = [
+                "#154360", "#1A5276", "#1F618D", "#2471A3", "#2980B9", "#5499C7", "#7FB3D5",
+                "#A9CCE3", "#D4E6F1", "#EAF2F8"
+            ]
+            // console.log(x);
         var pieTrace = {
             values: category_count[i].values,
             labels: filtered_ed,
             // hovertext: count + labels,
             hoverinfo: 'hovertext',
             type: 'pie',
-
+            showlegend: false,
+            // marker: {
+            //     'colors': color1
+            // },
+            hole: 0.4
         };
 
         var pieLayout = {
             'legend': {
-                x: 0.1,
-                // y: 5,
+                // x: 0.05,
+                // y: .5,
                 'orientation': 'h'
+
+            },
+            title: {
+                text: 'Required Education',
+                font: {
+                    size: 24,
+                    family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                    color: '#666'
+                }
             }
         };
         // title: `Pie Chart `,
 
         Plotly.newPlot("pie", [pieTrace], pieLayout);
-    
+
 
         // Pie chart for Employment Type
         var emp_type = filteredData.map(d => d.employment_type)
 
-        var filtered_empT= emp_type.filter(d => d !== "")
-        console.log(filtered_empT)
+        var filtered_empT = emp_type.filter(d => d !== "")
+            // console.log(filtered_empT)
             // var x = category_count.filter(d => d.value === jobcat)
         var i = 0
         if (jobcat === "Real") {
@@ -71,17 +87,26 @@ function init() {
             // hovertext: count + labels,
             hoverinfo: 'hovertext',
             type: 'pie',
-
+            showlegend: false,
         };
 
         var pieLayout = {
             'legend': {
                 x: 0.1,
-                // y: 5,
+                // y: .75,
                 'orientation': 'h'
+            },
+            title: {
+                text: 'Employment Opportunity',
+                font: {
+                    size: 24,
+                    family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                    color: '#666'
+                }
             }
         };
         // title: `Pie Chart `,
+
 
         Plotly.newPlot("empPie", [pieEmp], pieLayout);
 
@@ -89,8 +114,8 @@ function init() {
         // Pie chart for Required Experience
         var exp_type = filteredData.map(d => d.required_experience)
 
-        var filtered_reqExp= exp_type.filter(d => d !== "")
-        console.log(filtered_reqExp)
+        var filtered_reqExp = exp_type.filter(d => d !== "")
+            // console.log(filtered_reqExp)
             // var x = category_count.filter(d => d.value === jobcat)
         var i = 0
         if (jobcat === "Real") {
@@ -104,14 +129,24 @@ function init() {
             // hovertext: count + labels,
             hoverinfo: 'hovertext',
             type: 'pie',
+            showlegend: false,
+            hole: 0.4
 
         };
 
         var pieLayout = {
             'legend': {
-                x: 0.1,
-                // y: 5,
+                x: 0.25,
+                // y: .75,
                 'orientation': 'h'
+            },
+            title: {
+                text: 'Required Experience',
+                font: {
+                    size: 24,
+                    family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                    color: '#666'
+                }
             }
         };
         // title: `Pie Chart `,
@@ -134,20 +169,20 @@ function init() {
         console.log(title_counts)
         var items = Object.keys(title_counts).map(function(key) {
             return [key, title_counts[key]];
-          });
-          // Sort the array based on the second element
-          items.sort(function(first, second) {
+        });
+        // Sort the array based on the second element
+        items.sort(function(first, second) {
             return second[1] - first[1];
-          });
+        });
 
-        console.log(items)
-        
-        sorted_items = items.slice(0,10)
-        console.log(sorted_items)
-    
+        // console.log(items)
+
+        sorted_items = items.slice(0, 10)
+            // console.log(sorted_items)
+
 
         // var fraudtype= filteredData.map(d => d.fraudulent)
-        var filtered_title= xjob_titles.filter(d => d !== "")
+        var filtered_title = xjob_titles.filter(d => d !== "")
         console.log(filtered_title)
             // var x = category_count.filter(d => d.value === jobcat)
         var i = 0
@@ -167,7 +202,9 @@ function init() {
                 font: {
                     size: 24,
                     family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-                    color: '#666'
+                    color: '#666',
+                    // style: 'bolder',
+                    // background: 'grey'
 
                 }
             }
@@ -177,8 +214,8 @@ function init() {
         var data_bar = [trace];
 
         Plotly.newPlot("bar", data_bar, layout, config);
- 
-        
+
+
     }
 
     test();
