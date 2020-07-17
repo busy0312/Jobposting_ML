@@ -1,12 +1,11 @@
-.topnav {
-    background-color: white;
+/* .navbar {
+    background-color: darkseagreen;
     font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-
-/* #img {
-    size: 0px;
 } */
+
+.img {
+    align-self: center;
+}
 
 .html {
     position: relative;
@@ -24,20 +23,20 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 110%;
-    /* background-color: lightgrey; */
+    height: auto;
+    background-color: lightgrey;
     font-family: Georgia, 'Times New Roman', Times, serif;
     box-sizing: border-box;
-    display: block;
+    /* display: block; */
 }
 
 .maincontainer {
     margin-top: 2%;
     margin-left: 2%;
-    margin-right: 2%;
-    margin-bottom: 2%;
-    width: 98%;
-    height: 100%;
+    margin-right: 6%;
+    margin-bottom: 5%;
+    width: 95%;
+    height: 90%;
     font-family: Georgia, 'Times New Roman', Times, serif;
     /* display: block; */
 }
@@ -53,6 +52,8 @@
     color: black;
     padding: 14px 16px;
     align-content: right;
+    background-color: darkseagreen;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 
@@ -81,7 +82,7 @@
     background-color: #505251;
     border-top-style: solid;
     border-top-width: 2px;
-    border-top-color: lightseagreen;
+    border-top-color: seagreen;
     color: white;
     min-height: 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;
