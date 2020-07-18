@@ -6,20 +6,24 @@ from config import postgres_password
 from sqlalchemy import create_engine
 from bs4 import BeautifulSoup
 import requests
+import tensorflow as tf
+import tensorflow_hub as hub
+from tensorflow.keras import datasets, layers, models
 from flask import (
     Flask,
     render_template,
     jsonify,
     request,
     redirect,
-    url_for)
+    url_for,
+    session)
 # from config import SQL_key, Local_SQL_URI
 
 #################################################
 # Flask Setup
 #################################################
 app = Flask(__name__)
-
+app.secret_key='asdf'
 #################################################
 # Database Setup
 #################################################
@@ -37,12 +41,12 @@ db.Model.metadata.reflect(bind=db.engine)
 
 # results = db.session.query(Animal.Name).all()
 # print(results)
-
+job_postings = []
 # from .models import Pet
 # create route that renders index.html template
 @app.route("/",  methods=["GET", "POST"])
 def home():
-
+    session['prediction']=""
     if request.method == "POST":
         # grab posted data 
         job_title = request.form['user_input']
@@ -75,7 +79,8 @@ def scrape_indeed(job_title):
     soup = BeautifulSoup(response.text, 'html.parser')
     results = soup.find_all('div', class_="jobsearch-SerpJobCard")
     # create list of dictionaries (job postings)
-    job_postings = []
+    global job_postings
+    job_postings=[]
     base_url = 'https://www.indeed.com'
     for result in results:
     
@@ -123,7 +128,8 @@ def scrape_craigslist(job_title):
     results = soup.find_all("a",{"class": "result-title"}) # ideed = card, cgraislist = string \
 #    print(results)
     # create list of dictionaries (job postings)
-    job_postings = []
+    global job_postings
+    job_postings=[]
     
     for result in results:
     
@@ -164,6 +170,24 @@ def scrape_craigslist(job_title):
 @app.route("/Analysis")
 def Analysis():
     return render_template("Analysis.html") 
+
+@app.route("/model",methods=["POST"])
+
+def predict():
+    global job_postings
+    description=request.form['user_input']
+    model = tf.compat.v1.keras.experimental.load_from_saved_model("model.h5", custom_objects={'KerasLayer':hub.KerasLayer})
+    predict=model.predict_classes([description])
+    # del(session['prediction'])
+
+    if predict[0][0] == 0:   
+        print('Real')
+        session['prediction']='Real'
+    else:
+        print('fake')
+        session['prediction']='Fake'
+    print(job_postings)
+    return render_template('index.html',description=description,job_postings=job_postings)
 
 if __name__ == "__main__":
     app.run(debug=True)
