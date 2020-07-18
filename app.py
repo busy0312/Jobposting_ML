@@ -156,7 +156,6 @@ def scrape_craigslist(job_title):
             pass
         
         #4. save the result
-
         
 #     # create dataframe from list of dictionaries
     table_ready = pd.DataFrame(job_postings)
