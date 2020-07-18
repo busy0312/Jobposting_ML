@@ -131,7 +131,7 @@ def scrape_craigslist(job_title):
     global job_postings
     job_postings=[]
     
-    for result in results:
+    for result in results[:10]:
     
 #         # Retrieve the thread title
 #         #1. grab the url
