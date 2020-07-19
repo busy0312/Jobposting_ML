@@ -174,7 +174,7 @@ def Analysis():
 
 def predict():
     global job_postings
-    description=request.form['user_input']
+    description=request.form['user_inputs']
     model = tf.compat.v1.keras.experimental.load_from_saved_model("model.h5", custom_objects={'KerasLayer':hub.KerasLayer})
     predict=model.predict_classes([description])
     # del(session['prediction'])

@@ -1,13 +1,8 @@
-/* .navbar {
-    background-color: darkseagreen;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-} */
-​
-.img {
+​.img {
     align-self: center;
 }
-​
-.html {
+
+​.html {
     position: relative;
     top: 0;
     bottom: 0;
@@ -16,8 +11,18 @@
     height: 100%;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-​
-.body {
+
+.header {
+    font-weight: bolder;
+    text-decoration-color: black;
+}
+
+
+/* #user_inputs {
+    overflow: auto;
+} */
+
+​.body {
     position: relative;
     top: 0;
     bottom: 0;
@@ -29,8 +34,8 @@
     box-sizing: border-box;
     /* display: block; */
 }
-​
-.maincontainer {
+
+​.maincontainer {
     margin-top: 2%;
     margin-left: 2%;
     margin-right: 6%;
@@ -40,45 +45,30 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     /* display: block; */
 }
-​
-.div1 {
+
+
+/* ​.div1 {
     box-sizing: content-box;
     font-weight: bolder;
     background-color: grey;
-}
-​
-.navbar a {
+} */
+
+​.navbar {
     font-size: 20px;
+    font-weight: bolder;
     color: black;
     padding: 14px 16px;
     align-content: right;
     background-color: darkseagreen;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-​
-​
-/* .visual {
-    width: auto;
-    height: auto;
-} */
-​
-.textbox {
-    height: fit-content;
-    width: fit-content;
-}
-​
-.container2 {
+
+​.container2 {
     display: block;
     height: 100%;
 }
-​
-​
-/* .card-body {
-    width: 100%;
-    align-self: right;
-} */
-​
-#footer {
+
+​#footer {
     background-color: #505251;
     border-top-style: solid;
     border-top-width: 2px;
