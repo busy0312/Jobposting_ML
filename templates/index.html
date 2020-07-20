@@ -80,8 +80,8 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{job.title}}</h5>
                                     <!-- <p class="card-text card-subtitle " >{{job.description}}</p> -->
-                                    <p style="display: none;" id="{{job.id}}">{{job.full_desc}}</p>
-                                    <a href="#" class="btn btn-primary" style="background-color: seagreen;" id="copy">Copy Job Description</a>
+                                    <p class="hidden-desc" style="display: none;" id="{{job.id}}">{{job["full description"]}}</p>                                    
+                                    <a href="#" class="btn btn-primary copy" style="background-color: seagreen;" id="copy">Copy Job Description</a>
                                     <a href="# " class="btn btn-primary" style="background-color: gray;" id="view">View Job Description</a>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                     <div class="textbox col ">
                         <h4 style="font-weight: bold "> Analyze Job Description </h4>
                         <form action="/model" class='prevent' method="POST">
-                            <textarea id="user_inputs" name="user_inputs" style="overflow:scroll; flex-shrink: 3; width: 100%;height:200px " placeholder="Insert Job Description here "></textarea>
+                            <textarea id="user_inputs" name="user_inputs" style="overflow:scroll; flex-shrink: 3; width: 100%;height:200px " placeholder="Insert Job Description here ">{{description}}</textarea>
                             <br>
                             <button type="submit" style="background-color: darkseagreen;">Submit</button>
                         </form>
@@ -119,6 +119,7 @@
 
 <!-- <script type="text/javascript " src="static/js/app.js "></script> -->
 <script type="text/javascript " src="{{ url_for( 'static', filename='js/app.js' ) }} "></script>
+<script type="text/javascript " src="{{ url_for( 'static', filename='js/gettext.js' ) }} "></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js "></script>
 
 

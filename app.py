@@ -102,7 +102,8 @@ def scrape_indeed(job_title):
             d = {
                 'title': titles,
                 'description': des,
-                'full description': full_des
+                'full description': full_des,
+                'url': new_url
             }
             job_postings.append(d)
         except:
@@ -177,6 +178,7 @@ def predict():
     description=request.form['user_inputs']
     model = tf.compat.v1.keras.experimental.load_from_saved_model("model.h5", custom_objects={'KerasLayer':hub.KerasLayer})
     predict=model.predict_classes([description])
+    # search_title = request.form['user_input']
     # del(session['prediction'])
 
     if predict[0][0] == 0:   
