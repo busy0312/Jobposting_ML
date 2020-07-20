@@ -30,7 +30,7 @@ app.secret_key='asdf'
 
 from flask_sqlalchemy import SQLAlchemy
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or f'postgres://chokuclmimtkyt:{postgres_password}@ec2-34-239-241-25.compute-1.amazonaws.com:5432/dd6emfhb0kd90o'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or f'postgres://opwdphsvqznbup:{postgres_password}@ec2-52-23-14-156.compute-1.amazonaws.com:5432/df38j5m3da0igq'
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or Local_SQL_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
@@ -90,10 +90,10 @@ def scrape_indeed(job_title):
             title = result.find('h2', class_='title')
             titles = title.a.text.replace("\n", "")
             des= result.find('div', class_='summary').ul.li.text
-
+            des_url=title.a['href']
             
             
-            new_url = base_url + result.find('a', class_='jobtitle')['href']
+            new_url = base_url + des_url
             #2. visit  the new page/ #3. scrape the results
             job_response = requests.get(new_url)
             job_soup = BeautifulSoup(job_response.text, 'html.parser')
@@ -103,7 +103,7 @@ def scrape_indeed(job_title):
                 'title': titles,
                 'description': des,
                 'full description': full_des,
-                # 'url': new_url
+                'des_url':new_url
             }
             job_postings.append(d)
         except:
@@ -115,7 +115,7 @@ def scrape_indeed(job_title):
     # create dataframe from list of dictionaries
     table_ready = pd.DataFrame(job_postings)
     # insert dataframe into db
-    engine = create_engine(f'postgres://chokuclmimtkyt:{postgres_password}@ec2-34-239-241-25.compute-1.amazonaws.com:5432/dd6emfhb0kd90o')
+    engine = create_engine(f'postgres://opwdphsvqznbup:{postgres_password}@ec2-52-23-14-156.compute-1.amazonaws.com:5432/df38j5m3da0igq')
     table_ready.to_sql('scraped jobs', engine, if_exists='append', index=False)
     # return to template
     return job_postings[:10]
@@ -148,7 +148,8 @@ def scrape_craigslist(job_title):
             full_des = job_results.text
             d = {
                 'title': title,
-                'full description': format_string(full_des)
+                'full description': format_string(full_des),
+                'des_url':new_url
             }
 #             print(d)
 #             print("----------")
@@ -161,7 +162,7 @@ def scrape_craigslist(job_title):
 #     # create dataframe from list of dictionaries
     table_ready = pd.DataFrame(job_postings)
 #     #insert dataframe into db
-    engine = create_engine(f'postgres://chokuclmimtkyt:{postgres_password}@ec2-34-239-241-25.compute-1.amazonaws.com:5432/dd6emfhb0kd90o')
+    engine = create_engine(f'postgres://opwdphsvqznbup:{postgres_password}@ec2-52-23-14-156.compute-1.amazonaws.com:5432/df38j5m3da0igq')
     table_ready.to_sql('scraped_cl', engine, if_exists='append')
 #     return to template
     return job_postings[:10]
