@@ -103,7 +103,7 @@ def scrape_indeed(job_title):
                 'title': titles,
                 'description': des,
                 'full description': full_des,
-                'url': new_url
+                # 'url': new_url
             }
             job_postings.append(d)
         except:
