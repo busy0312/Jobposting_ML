@@ -30,7 +30,6 @@ Python Pandas
 HTML/CSS/Bootstrap
 Heroku
 Tensorflow
-
 ```
 Model
 ```
