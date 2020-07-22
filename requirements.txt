@@ -28,3 +28,4 @@ wcwidth==0.1.7
 Werkzeug==0.12.2
 gunicorn==19.7.1
 requests
+tensorflow
