@@ -2,7 +2,7 @@
 import os
 import pandas as pd
 import re
-from config import postgres_password
+# from config import postgres_password
 from sqlalchemy import create_engine
 from bs4 import BeautifulSoup
 import requests
