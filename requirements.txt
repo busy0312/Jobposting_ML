@@ -30,5 +30,5 @@ gunicorn==19.7.1
 requests
 tensorflow==2.2.0
 tensorflow-hub
-tensorboard==2.3.0
-setuptools
+tensorboard==2.2.0
+setuptools==40.3.0
