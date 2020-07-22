@@ -31,4 +31,4 @@ requests
 tensorflow
 tensorflow-hub
 tensorboard==2.2.2 
-setuptool==39.0.1
+setuptool
