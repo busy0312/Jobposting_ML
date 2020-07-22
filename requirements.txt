@@ -28,7 +28,7 @@ wcwidth==0.1.7
 Werkzeug==0.12.2
 gunicorn==19.7.1
 requests
-tensorflow
+tensorflow==2.2.0
 tensorflow-hub
-tensorboard 
+tensorboard==2.3.0
 setuptools
