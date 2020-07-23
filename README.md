@@ -22,18 +22,18 @@ Find a Problem worth Solving, Analyzing, or Visualizing
 Analyzing - which jobs are real or fake
 ```
 
-Use ML in the context of technologies learned and must-use
+Use ML in the context of technologies learned 
 ```
 Sci-Kit Learn and/or another machine learning library
 Python Flask
 Python Pandas
 HTML/CSS/Bootstrap
-Amazon AWS
-Databricks
+Heroku
+Tensorflow
 ```
 Model
 ```
-Logistic Regression
+Binary Classification
 
 ```
 
