@@ -1,7 +1,7 @@
 function init() {
     async function test() {
         var data = await d3.csv("https://raw.githubusercontent.com/busy0312/Project3_Jobposting/master/Resources/jobpost.csv");
-        console.log(data);
+        // console.log(data);
 
         var jobcat = d3.select("#selvalue").node().value;
 
