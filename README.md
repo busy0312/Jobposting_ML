@@ -1,9 +1,8 @@
-# Project3_Jobposting
+# Jobposting
 
 
-
+Group members
 ```
-Group members:
 Abby Ko
 James Barraza
 Jacob Bellagio
