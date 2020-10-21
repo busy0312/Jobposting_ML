@@ -9,7 +9,6 @@ ipython-genutils==0.2.0
 itsdangerous==0.24
 jedi==0.11.0
 Jinja2==2.10
-MarkupSafe==1.0
 numpy
 pandas
 parso==0.1.0
@@ -22,7 +21,7 @@ ptyprocess==0.5.2
 Pygments==2.2.0
 simplegeneric==0.8.1
 six
-SQLAlchemy==1.1.15
+SQLAlchemy
 traitlets==4.3.2
 wcwidth==0.1.7
 Werkzeug==0.12.2
@@ -31,4 +30,4 @@ requests
 tensorflow==2.2.0
 tensorflow-hub
 tensorboard==2.2.0
-setuptools==41.0.0
+

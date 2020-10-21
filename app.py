@@ -2,8 +2,8 @@
 import os
 import pandas as pd
 import re
-from config import postgres_password
-# postgres_password=os.environ.get("postgres_password")
+# from config import postgres_password
+postgres_password=os.environ.get("postgres_password")
 from sqlalchemy import create_engine
 from bs4 import BeautifulSoup
 import requests
@@ -31,12 +31,12 @@ app.secret_key='asdf'
 
 from flask_sqlalchemy import SQLAlchemy
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or f'postgres://opwdphsvqznbup:{postgres_password}@ec2-52-23-14-156.compute-1.amazonaws.com:5432/df38j5m3da0igq'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or Local_SQL_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
 db = SQLAlchemy(app)
-print(db.Model.metadata)
+# print(db.Model.metadata)
 db.Model.metadata.reflect(bind=db.engine)
 
 
@@ -193,4 +193,4 @@ def predict():
     return render_template('index.html',description=description,job_postings=job_postings)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
